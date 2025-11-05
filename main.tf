@@ -39,9 +39,9 @@ resource "aws_ce_anomaly_monitor" "this" {
 }
 
 resource "aws_ce_anomaly_subscription" "this" {
-  name              = local.subscription_name
-  frequency         = var.subscription_frequency
-  monitor_arn_list  = [aws_ce_anomaly_monitor.this.arn]
+  name             = local.subscription_name
+  frequency        = var.subscription_frequency
+  monitor_arn_list = [aws_ce_anomaly_monitor.this.arn]
 
   subscriber {
     type    = "SNS"
