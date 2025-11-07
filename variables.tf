@@ -35,14 +35,14 @@ variable "subscription_name" {
 
 variable "subscription_threshold_absolute" {
   description = "Absolute dollar threshold that triggers a notification (USD)."
-  type        = string
-  default     = "10"
+  type        = number
+  default     = 10
 }
 
 variable "subscription_threshold_percentage" {
   description = "Percentage threshold that triggers a notification."
-  type        = string
-  default     = "20"
+  type        = number
+  default     = 50
 }
 
 variable "subscription_frequency" {

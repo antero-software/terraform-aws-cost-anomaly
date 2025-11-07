@@ -37,14 +37,14 @@ resource "aws_ce_anomaly_subscription" "this" {
       dimension {
         key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
         match_options = ["GREATER_THAN_OR_EQUAL"]
-        values        = [var.subscription_threshold_absolute]
+        values        = [tostring(var.subscription_threshold_absolute)]
       }
     }
     or {
       dimension {
         key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
         match_options = ["GREATER_THAN_OR_EQUAL"]
-        values        = [var.subscription_threshold_percentage]
+        values        = [tostring(var.subscription_threshold_percentage)]
       }
     }
   }
