@@ -171,8 +171,8 @@ def _build_blocks_for_anomaly(anomaly: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 def _build_payload(anomaly: Optional[Dict[str, Any]], raw_text: str) -> Dict[str, Any]:
     if anomaly and _get_any(anomaly, [["AnomalyId"], ["anomalyId"]]):
-    impact = _get_any(anomaly, [["Impact", "TotalImpact"], ["impact", "totalImpact"]])  # may be None
-    color = _severity_color(impact if isinstance(impact, (int, float)) else None)
+        impact = _get_any(anomaly, [["Impact", "TotalImpact"], ["impact", "totalImpact"]])  # may be None
+        color = _severity_color(impact if isinstance(impact, (int, float)) else None)
         return {
             # Use an attachment for the color bar; detailed content comes from Block Kit
             "attachments": [
@@ -189,7 +189,6 @@ def _build_payload(anomaly: Optional[Dict[str, Any]], raw_text: str) -> Dict[str
             {"type": "section", "text": {"type": "mrkdwn", "text": f"```{raw_text}```"}},
         ],
     }
-
 
 def handler(event, context):
     print("Event object:", json.dumps(event))
