@@ -33,10 +33,19 @@ resource "aws_ce_anomaly_subscription" "this" {
   # GREATER_THAN_OR_EQUAL against var.subscription_threshold. Use a single
   # operand (no AND wrapper) to satisfy API requirement.
   threshold_expression {
-    dimension {
-      key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
-      match_options = ["GREATER_THAN_OR_EQUAL"]
-      values        = [tostring(var.subscription_threshold)]
+    or {
+      dimension {
+        key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
+        match_options = ["GREATER_THAN_OR_EQUAL"]
+        values        = [var.subscription_threshold_absolute]
+      }
+    }
+    or {
+      dimension {
+        key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+        match_options = ["GREATER_THAN_OR_EQUAL"]
+        values        = [var.subscription_threshold_percentage]
+      }
     }
   }
 
