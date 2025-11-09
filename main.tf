@@ -75,8 +75,8 @@ resource "aws_iam_role" "lambda" {
 
 data "aws_iam_policy_document" "cad_sns_policy" {
   statement {
-    sid     = "AllowCostAnomalyDetectionToPublish"
-    effect  = "Allow"
+    sid    = "AllowCostAnomalyDetectionToPublish"
+    effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["costalerts.amazonaws.com"]
